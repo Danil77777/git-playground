@@ -14,6 +14,7 @@ guessed = 0
 errors = 0
 
 guesses = []
+listWords = []
 
 WORDS_TO_WIN = 5
 ERRORS_TO_LOSE = 3
@@ -25,9 +26,13 @@ word = words[random.randrange(0, len(words))]
 print(f"Can you make up {WORDS_TO_WIN} words from letters in word provided by me?")
 print(f"Your word is '{word}'")
 
-
+list = []
 while not is_game_over():
     guess = input("Your next take: ")
+    if guess in listWords:
+        print("You input again word!! input new word!!!")
+        continue
+    listWords.append(guess)
     if guess in full_list:
         guessed += 1
         guesses.append(guess)
